@@ -23,6 +23,29 @@ being wrapped.
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+ReaderT :: MonadTypeRep M, Monad m => M -> ()
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Reader from 'crocks/Reader'
+import assoc from 'crocks/helpers/assoc'
+
+Reader(assoc('animal', 'cat'))
+//=> Reader Object Object
+
+Reader(x => x.length || 0)
+//=> Reader a Number
+```
+
+</article>
+
 <article id="topic-constructor">
 
 ## Constructor Methods

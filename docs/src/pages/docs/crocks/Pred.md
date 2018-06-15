@@ -78,6 +78,37 @@ filter(largeNumber, [ 200, 375, 15 ])
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Pred :: (a -> Boolean) -> Pred a
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Pred from 'crocks/Pred'
+
+import and from 'crocks/logic/and'
+import isArray from 'crocks/predicates/isArray'
+import not from 'crocks/logic/not'
+
+// isEmpty :: a -> Boolean
+const isEmpty =
+  not(x => !!x.length)
+
+// isEmptyArray :: a -> Boolean
+const isEmptyArray =
+  and(isArray, isEmpty)
+
+Pred(isEmptyArray)
+//=> Pred a
+```
+
+</article>
+
 <article id="topic-constructor">
 
 ## Constructor Methods

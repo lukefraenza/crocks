@@ -103,6 +103,33 @@ empty
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Equiv :: ((a, a) -> Boolean)-> Equiv a a
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Equiv from 'crocks/Equiv'
+
+// samePart :: (a -> b) -> (a, a) -> Boolean
+const samePart =  fn => (x, y) =>
+  fn(x) === fn(y)
+
+// mod12 :: Integer -> Integer
+const mod12 =
+  x => x % 12
+
+Equiv(samePart(mod12))
+//=> Equiv Integer Integer
+```
+
+</article>
+
 <article id="topic-instance">
 
 ## Instance Methods

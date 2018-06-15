@@ -46,9 +46,9 @@ At times, in a given environment, it may not be feasible to run an asynchronous
 flow to completion. To address when these use cases pop up, the [`fork`](#fork) function
 will return a function that ignores its arguments and returns a `Unit`. When
 this function is called, `Async` will finish running the current "in flight"
-computation to completion, but will cease all remaining execution. Wrapped functions can return 
-a function that will be called when an `Async` computation is cancelled, this can be used to 
-clear timeouts or "in flight" xhr requests. Cancellation with `Async` is total and will cancel 
+computation to completion, but will cease all remaining execution. Wrapped functions can return
+a function that will be called when an `Async` computation is cancelled, this can be used to
+clear timeouts or "in flight" xhr requests. Cancellation with `Async` is total and will cancel
 silently, without notification.
 
 <!-- eslint-disable no-console -->
@@ -142,6 +142,28 @@ afterCancel() // this clears the timeout
 
 ## Implements
 `Functor`, `Alt`,  `Bifunctor`, `Apply`, `Chain`, `Applicative`, `Monad`
+
+</article>
+
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Async :: ((e -> (), a -> ()) -> ()) -> Async e a
+Async :: ((e -> (), a -> ()) -> () -> ()) -> Async e a
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Async from 'crocks/Async'
+
+Async((reject, resolve) => {
+  setTimeout(() => resolve('fired'), 1000)
+})
+//=> Async e String
+```
 
 </article>
 

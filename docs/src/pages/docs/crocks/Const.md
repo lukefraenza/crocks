@@ -71,6 +71,28 @@ resetField(changed)
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Const :: c -> Const c a
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Const from 'crocks/Const'
+
+Const('always and forever')
+//=> Const String a
+
+Const(false)
+//=> Const Boolean a
+```
+
+</article>
+
 <article id="topic-instance">
 
 ## Instance Methods

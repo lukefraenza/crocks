@@ -88,6 +88,44 @@ bigNumber(3)
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Maybe :: a -> Maybe a
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Maybe from 'crocks/Maybe'
+import equals from 'crocks/pointfree/equals'
+
+Maybe('some string')
+//=> Maybe String
+
+Maybe.of('some string')
+//=> Maybe String
+
+Maybe.Just('some string')
+//=> Maybe String
+
+equals(
+  Maybe.Just([ 1, 2, 3 ]),
+  Maybe.of([ 1, 2, 3 ])
+)
+//=> true
+
+equals(
+  Maybe.of({ a: 100 }),
+  Maybe({ a: 100 })
+)
+//=> true
+```
+
+</article>
+
 <article id="topic-constructor">
 
 ## Constructor Methods

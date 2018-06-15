@@ -11,7 +11,7 @@ Arrow a b
 
 `Arrow` is a `Profunctor` that lifts a function of type `a -> b` and allows for
 lazy execution of the function. `Arrow` can be considered a `Strong Profunctor`
-if the underlying data running throw the `Arrow` is a `Pair`, typically in the
+if the underlying data running through the `Arrow` is a `Pair`, typically in the
 form of `Arrow (Pair a c) (Pair b d)`.
 
 This will allow you to split execution into two distinct paths, applying `Arrow`
@@ -70,6 +70,35 @@ arrUpperName
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Arrow :: (a -> b) -> Arrow a b
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Arrow from 'crocks/Arrow'
+
+import compose from 'crocks/helpers/compose'
+import option from 'crocks/pointfree/option'
+import prop from 'crocks/Maybe/prop'
+
+// length :: a -> Integer
+const length = compose(
+  option(0),
+  prop('length')
+)
+
+Arrow(length)
+//=> Arrow a Integer
+```
+
+</article>
+
 <article id="topic-constructor">
 
 ## Constructor Methods
@@ -104,8 +133,11 @@ const left =
 const right =
   arrow.compose(id)
 
-right.runWith(12) //=> '12'
-left.runWith(12)  //=> '12'
+right.runWith(12)
+//=> '12'
+
+left.runWith(12)
+//=> '12'
 ```
 
 </article>
@@ -150,10 +182,12 @@ const arrDoubleAndAdd =
     .map(merge(add))
 
 arrDouble
-  .runWith(200)  //=> 400
+  .runWith(200)
+//=> 400
 
 arrDoubleAndAdd
-  .runWith(Pair(200, 10))  //=> 420
+  .runWith(Pair(200, 10))
+//=> 420
 ```
 
 #### compose
@@ -248,11 +282,11 @@ arrAdd10
 
 arrAdd10Value
   .runWith({ value: 23 })
-  //=> 33
+//=> 33
 
 arrAdd10Value
   .runWith({ value: '23' })
-  //=> 10
+//=> 10
 
 arrAdd10Value
   .runWith({ num: '23' })

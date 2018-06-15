@@ -81,6 +81,28 @@ average([ 9, 77, 34 ])
 
 </article>
 
+<article id="topic-construction">
+
+## Construction
+
+```haskell
+Pair :: (a, b) -> Pair a b
+```
+
+[ CONSTRUCTOR DESC]
+
+```javascript
+import Pair from 'crocks/Pair'
+
+Pair(34, false)
+//=> Pair Number Boolean
+
+Pair(34, Pair(true, 'string'))
+//=> Pair Number (Pair Boolean String)
+```
+
+</article>
+
 <article id="topic-instance">
 
 ## Instance Methods
